@@ -8,7 +8,7 @@ class Comensales {
 	method leAgrada(unaComida)
 	method estaSatisfecho() = self.pesoComidasIngeridas() >= peso*0.01 && self.condicionAdicional()
 	method pesoComidasIngeridas() = comidasQueComio.sum{ c=>c.peso() }
-	method condicionAdicional() = true
+	method condicionAdicional()
 }
 
 class Vegetariano inherits Comensales {
@@ -18,6 +18,7 @@ class Vegetariano inherits Comensales {
 
 class HambrePopular inherits Comensales {
 	override method leAgrada(unaComida) = unaComida.esAbundante()
+	override method condicionAdicional() = true
 }
 
 class PaladarFino inherits Comensales {
