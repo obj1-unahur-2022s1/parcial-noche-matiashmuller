@@ -6,7 +6,7 @@ object cocina {
 	
 	method prepararComida(unaComida) { comidasPreparadas.add(unaComida) }
 	method quitarComida(unaComida) { comidasPreparadas.remove(unaComida) }
-	method tieneBuenaOfertaVege() = (self.comidasNoVege().size() - self.comidasVege().size()) <= 2
+	method tieneBuenaOfertaVege() = (self.comidasNoVege().size() - self.comidasVege().size()).abs() <= 2
 	method comidasVege() = comidasPreparadas.filter{ c=>c.esAptoVegetariano() }
 	// Otra forma de hacer comidasNoVege() sería comidasPreparadas.filter{ c=>!self.comidasVege().contains(c) }
 	method comidasNoVege() = comidasPreparadas.filter{ c=>!c.esAptoVegetariano() }

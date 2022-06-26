@@ -7,10 +7,10 @@ class Plato {
 }
 
 class Provoleta inherits Plato {
-	var peso
-	var tieneEspecias
+	const property peso
+	const tieneEspecias
 	
-	override method peso() = peso
+	
 	override method esAptoVegetariano() = !tieneEspecias
 	method esEspecial() = self.esAbundante() || tieneEspecias
 	override method valoracion() = if(self.esEspecial()) 120 else 80
@@ -49,7 +49,7 @@ class Parrillada inherits Plato {
 	method agregarCorte(corte) { cortesCarne.add(corte) }
 	method quitarCorte(corte) { cortesCarne.remove(corte) }
 	override method peso() = cortesCarne.sum{ c=>c.peso() }
-	override method valoracion() = (15* self.maximaCalidadCortes() - cortesCarne.size()).abs()
+	override method valoracion() = 0.max(15* self.maximaCalidadCortes() - cortesCarne.size())
 	method maximaCalidadCortes() = cortesCarne.max({ c=>c.calidad() }).calidad()
 }
 
